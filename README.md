@@ -8,7 +8,7 @@ The directive provides convienence methods for interacting with the underlying c
 
 Complete control of the underlying `Highcharts.Chart` or `Highcharts.StockChart` object can be achieved by retrieving the underlying chart object using `getChart()` method on the `config` object passed during directive construction.
 
-# Install
+# Install & Example Usage
 
 `bower install highcharts-directive`
   
@@ -27,7 +27,17 @@ var app = angular.module('App', ['highcharts-directive'])
 
 ```html
 <!-- ... then use it as you would with any angular directive -->
-<div class="chart-wrapper" highcharts config="chart.config" series="chart.series"></div>
+<div highcharts config="chart.config" series="chart.series" api="chart.api"></div>
+```
+
+```js
+// assuming you have the following setup in your Controller
+$scope.chart = { 
+  config: { xAxis: {...}, ... },
+  series: [...],
+  api: {} // this empty object is used to store methods exposed by the directive, should you want to interact with the underlying charts
+}
+
 ```
 
 # Attributes
@@ -51,3 +61,8 @@ The following methods are exposed in the `config` object that you passed to the 
 | addSeries       | object    | add the given series                                                        |
 | removeSeries    | object    | if `id` is set, series with given `id` will be removed, likewise for `name` |
 
+### Example
+```js
+  $scope.chart = { ..., api: {} };
+  $scope.chart.api.removeSeries({id: 'myChart'});
+```
