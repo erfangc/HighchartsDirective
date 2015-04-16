@@ -1,5 +1,12 @@
 # HighchartsDirective
+
 Wrapper around Highcharts for AngularJS - solves many Angular/jQuery integration problems
+
+It uses the jQuery resize plugin to ensure that the chart always re-sizes properly to container dimension changes. Traditionally Highcharts only resized on `window` resize events
+
+The directive provides convienence methods for interacting with the underlying chart. 
+
+Complete control of the underlying `Highcharts.Chart` or `Highcharts.StockChart` object can be achieved by retrieving the underlying chart object using `getChart()` method on the `config` object passed during directive construction.
 
 # Install
 
@@ -21,6 +28,13 @@ Wrapper around Highcharts for AngularJS - solves many Angular/jQuery integration
 ```
 
 # Attributes
+
+| Name         | Type    | Description                                                                                                                                                              |
+|--------------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| config       | object  | Highcharts configuration object (except the series property)                                                                                                             |
+| series       | array   | Highcharts series array. This array may be watched and new series automatically rendered if `manageSeries` is set to true                                                |
+| highstock    | boolean | indicate whether the underlying chart should be a StockChart or not                                                                                                      |
+| manageSeries | boolean | if `true` the directive will `$watch` the `series` array for changes and render those changes accordingly. *This requires you to have an `id` property for every series* |
 
 # API
 
