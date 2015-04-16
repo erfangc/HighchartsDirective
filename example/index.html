@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="App">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+</head>
+<body ng-controller="MainCtrl">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                Highcharts Directive Example
+            </a>
+        </div>
+    </div>
+</nav>
+<hr/>
+<div class="container">
+    <button ng-click="sideByside = !sideByside" class="btn btn-default">Change Layout</button>
+    <button ng-click="removeJohn()" ng-show="!johnRemoved" class="btn btn-default">Remove John</button>
+    <button ng-click="addJohn()" ng-show="johnRemoved" class="btn btn-default">Add John Back</button>
+</div>
+<hr/>
+<div class="container-fluid">
+    <div class="container-fluid" ng-class="{'col-md-6': sideByside}">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="chart-wrapper" highcharts config="chart.config" series="chart.series"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" ng-class="{'col-md-6': sideByside}">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="chart-wrapper" highcharts config="chart2.config" series="chart2.series"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr/>
+<br/>
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/highstock-release/highstock.js"></script>
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="../highcharts-directive.js"></script>
+<script src="example.js"></script>
+</body>
+</html>
