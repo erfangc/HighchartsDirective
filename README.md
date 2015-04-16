@@ -19,7 +19,6 @@ Complete control of the underlying `Highcharts.Chart` or `Highcharts.StockChart`
 <script src="../bower_components/jquery/dist/jquery.js"></script>
 <script src="../bower_components/highstock-release/highstock.js"></script>
 <script src="../bower_components/angular/angular.min.js"></script>
-<script src="../highcharts-directive.js"></script>
 ```
 
 ```js
@@ -39,6 +38,7 @@ var app = angular.module('App', ['highcharts-directive'])
 | series       | array   | Highcharts series array. This array may be watched and new series automatically rendered if `manageSeries` is set to true                                                |
 | highstock    | boolean | indicate whether the underlying chart should be a StockChart or not                                                                                                      |
 | manageSeries | boolean | if `true` the directive will `$watch` the `series` array for changes and render those changes accordingly. *This requires you to have an `id` property for every series* |
+| api | empty object | if set, the directive will expose, on the provided object, some rudimentary methods for interacting with the created Highchart object. see below for more info. |
 
 # API
 
@@ -47,6 +47,7 @@ The following methods are exposed in the `config` object that you passed to the 
 | Method              | Arguments | Description                                                                 |
 |---------------------|-----------|-----------------------------------------------------------------------------|
 | getChart            | none      | retrieves the underlying Highcharts object                                  |
-| api.removeAllSeries | none      | removes all series from the current chart                                   |
-| api.addSeries       | object    | add the given series                                                        |
-| api.removeSeries    | object    | if `id` is set, series with given `id` will be removed, likewise for `name` |
+| removeAllSeries | none      | removes all series from the current chart                                   |
+| addSeries       | object    | add the given series                                                        |
+| removeSeries    | object    | if `id` is set, series with given `id` will be removed, likewise for `name` |
+

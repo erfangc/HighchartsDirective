@@ -10,7 +10,8 @@ app.controller('MainCtrl', function ($scope) {
             name: 'Jane',
             data: [1, 3, 4, 3, 3, 5, 4]
         }],
-        config: getChartConfig()
+        config: getChartConfig(),
+        api: {}
     }
 
     $scope.chart2 = {
@@ -24,18 +25,19 @@ app.controller('MainCtrl', function ($scope) {
             type: 'spline',
             data: [1, 3, 4, 3, 3, 5, 4]
         }],
-        config: getChartConfig()
+        config: getChartConfig(),
+        api: {}
     }
 
     $scope.removeJohn = function () {
-        $scope.chart.config.api.removeSeries({id: 'john'})
-        $scope.chart2.config.api.removeSeries({id: 'john'})
+        $scope.chart.api.removeSeries({id: 'john'})
+        $scope.chart2.api.removeSeries({id: 'john'})
         $scope.johnRemoved = true
     }
 
     $scope.addJohn = function () {
-        $scope.chart.config.api.addSeries(johnSeries)
-        $scope.chart2.config.api.addSeries(johnSeries)
+        $scope.chart.api.addSeries(johnSeries)
+        $scope.chart2.api.addSeries(johnSeries)
         $scope.johnRemoved = false
     }
 })

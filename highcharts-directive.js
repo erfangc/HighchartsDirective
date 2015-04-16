@@ -53,7 +53,8 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
                 config: "=",
                 series: "=",
                 highstock: "=",
-                manageSeries: "="
+                manageSeries: "=",
+                api: "="
             },
             link: function (scope, element) {
                 if (!scope.highstock)
@@ -76,20 +77,18 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
                         }
                     }, true)
 
-                // API method for retriving the underlying Highcharts Object
-                // which exposes the native Highcharts API
-                scope.config.getChart = function () {
-                    return scope.chart;
-                }
                 // API for interacting with the underlying chart object through the directive
-                scope.config.api = {
-                    removeAllSeries: function () {
+                if (scope.api) {
+                    scope.api.getChart = function () {
+                        return scope.chart;
+                    }
+                    scope.api.removeAllSeries = function () {
                         removeAllSeries(scope.chart);
-                    },
-                    addSeries: function (series) {
+                    };
+                    scope.api.addSeries = function (series) {
                         addSeries([series], scope, true);
-                    },
-                    removeSeries: function (options) {
+                    };
+                    scope.api.removeSeries = function (options) {
                         if (options.id)
                             scope.chart.get(options.id).remove();
                     }
@@ -97,7 +96,10 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
             }
         }
     })
-}());
+}
+()
+)
+;
 
 /**
  * jQuery Resize Plugin, see credit below
