@@ -22,6 +22,10 @@ Complete control of the underlying `Highcharts.Chart` or `Highcharts.StockChart`
 <script src="../highcharts-directive.js"></script>
 ```
 
+```js
+var app = angular.module('App', ['highcharts-directive'])
+```
+
 ```html
 <!-- ... then use it as you would with any angular directive -->
 <div class="chart-wrapper" highcharts config="chart.config" series="chart.series"></div>
