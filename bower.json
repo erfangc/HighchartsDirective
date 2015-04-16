@@ -11,8 +11,7 @@
     "directive",
     "angular"
   ],
-  "license": "private",
-  "private": true,
+  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
