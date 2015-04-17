@@ -237,6 +237,8 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
 
         // Called only when the first 'resize' event callback is bound per element.
         setup: function () {
+            if (!(this instanceof HTMLElement || this == window))
+                return false;
             // Since window has its own native 'resize' event, return false so that
             // jQuery will bind the event using DOM methods. Since only 'window'
             // objects have a .setTimeout method, this should be a sufficient test.
@@ -286,6 +288,8 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
         // Called every time a 'resize' event callback is bound per element (new in
         // jQuery 1.4).
         add: function (handleObj) {
+            if (!(this instanceof HTMLElement || this == window))
+                return false;
             // Since window has its own native 'resize' event, return false so that
             // jQuery doesn't modify the event object. Unless, of course, we're
             // throttling the 'resize' event for window.
