@@ -8,6 +8,10 @@ The directive provides convienence methods for interacting with the underlying c
 
 Complete control of the underlying `Highcharts.Chart` or `Highcharts.StockChart` object can be achieved by retrieving the underlying chart object using `getChart()` method on the `config` object passed during directive construction.
 
+# Development TODOs
+
+  - Instead of polling, use a less resource intensive and safer way to trigger resize events [Currently using the following approach](https://github.com/cowboy/jquery-resize/)
+
 # Install & Example Usage
 
 `bower install highcharts-directive`
